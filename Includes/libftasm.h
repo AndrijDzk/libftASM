@@ -13,29 +13,36 @@
 #ifndef LIBFTASM_H
 # define LIBFTASM_H
 # include <stdlib.h>
+# include <ctype.h>
 
-void		ft_bzero(void* ptr, size_t n);
+void		ft_bzero(void *ptr, size_t n);
 
-void		ft_strcat(char* s1, const char* s2);
+char		*ft_strcat(char *s1, const char *s2);
 
 int			ft_isalpha(int c);
+
+int			ft_isdigit(int c);
+
+int			ft_isalnum(int c);
+
+int			ft_isascii(int c);
+
+int			ft_isprint(int c);
 
 int			ft_toupper(int c);
 
 int			ft_tolower(int c);
 
-int			ft_puts(char* str);
+int			ft_puts(char *str);
 
-size_t		ft_strlen(const char* s);
+size_t		ft_strlen(const char *s);
 
-int			ft_bzero_tests(void);
+void		*ft_memset(void *ptr, int c, size_t len);
 
-int			ft_strcat_tests(void);
+void		*ft_memcpy(void *dst, void *src, size_t n);
 
-void		ft_isalpha_tests(void);
+char		*ft_strdup(char *s1);
 
-int			ft_puts_tests(void);
-
-int			ft_strlen_tests(void);
+int			ft_cat(int fd);
 
 #endif

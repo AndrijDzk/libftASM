@@ -19,10 +19,13 @@ int		ft_puts_tests(void)
 	int		ret1;
 	int		ret2;
 
-	if ((ret1 = puts(NULL)) != (ret2 = ft_puts(NULL)))
+	ret1 = puts(NULL);
+	ret2 = ft_puts(NULL);
+	if (ret1 != ret2)
 		return (1);
-	else if ((ret1 = puts("Hello world!")) != (ret2 = ft_puts("Hello world!")))
+	ret1 = puts("Hello world!");
+	ret2 = ft_puts("Hello world!");
+	if (ret1 != ret2)
 		return (1);
-	else
-		return (0);
+	return (0);
 }

@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen_tests.c                                  :+:      :+:    :+:   */
+/*   ft_cat_tests.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adzikovs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/02 17:05:41 by adzikovs          #+#    #+#             */
-/*   Updated: 2018/09/02 17:05:43 by adzikovs         ###   ########.fr       */
+/*   Created: 2018/09/04 15:11:49 by adzikovs          #+#    #+#             */
+/*   Updated: 2018/09/04 15:11:51 by adzikovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
+#include <sys/fcntl.h>
+
 #include "libftasm.h"
-#include <string.h>
 
-int		ft_strlen_tests(void)
+int		ft_cat_tests(void)
 {
-	char	*a;
-	char	*b;
-	int		ret1;
-	int		ret2;
+	int		fd;
 
-	a = "Hello world!\n";
-	b = NULL;
-	ret1 = strlen(a);
-	ret2 = ft_strlen(a);
-	if (ret1 != ret2)
-		return (1);
-	ft_strlen(b);
+	fd = open("author", O_RDONLY);
+	if (fd > 0)
+	{
+		ft_cat(fd);
+		close(fd);
+	}
+	ft_cat(0);
+	ft_cat(-1);
 	return (0);
 }

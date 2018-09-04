@@ -1,31 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen_tests.c                                  :+:      :+:    :+:   */
+/*   ft_memset_tests.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adzikovs <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/02 17:05:41 by adzikovs          #+#    #+#             */
-/*   Updated: 2018/09/02 17:05:43 by adzikovs         ###   ########.fr       */
+/*   Created: 2018/09/04 12:23:23 by adzikovs          #+#    #+#             */
+/*   Updated: 2018/09/04 12:23:25 by adzikovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftasm.h"
 #include <string.h>
 
-int		ft_strlen_tests(void)
+#include "libftasm.h"
+
+int		ft_memset_tests(void)
 {
 	char	*a;
 	char	*b;
-	int		ret1;
-	int		ret2;
+	size_t	i;
 
-	a = "Hello world!\n";
-	b = NULL;
-	ret1 = strlen(a);
-	ret2 = ft_strlen(a);
-	if (ret1 != ret2)
+	a = (char*)malloc(10 * sizeof(*a));
+	b = (char*)malloc(10 * sizeof(*b));
+	memset(a, 1, 10);
+	if (ft_memset(b, 1, 10) != b)
+	{
+		free(a);
+		free(b);
 		return (1);
-	ft_strlen(b);
+	}
+	i = 0;
+	while (i < 10)
+	{
+		if (a[i] != b[i])
+			return (1);
+		i++;
+	}
+	free(a);
+	free(b);
+	if (ft_memset(0, 1, 10))
+		return (1);
 	return (0);
 }
